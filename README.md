@@ -4,7 +4,7 @@
 
 > 输入鞋子的边缘图，生成对应的鞋子照片。
 
-该任务使用 `edges2shoes` 成对数据集，模型采用 pix2pix，也就是 conditional GAN。它更准确地属于有监督的 image-to-image translation，而不是迁移学习或普通风格迁移。
+该任务使用 `edges2shoes` 成对数据集，模型采用 pix2pix，是 conditional GAN。属于有监督的 image-to-image translation。
 
 ## 目录说明
 
@@ -24,21 +24,14 @@
     └── loss_log.txt                # 本次训练日志
 ```
 
-`figure/`、`tex/`、推理输出图片和完整数据集没有上传到仓库。
 
 ## 环境配置
 
-推荐使用 conda 环境。原项目环境文件已保留：
+使用 conda 环境，原项目环境文件已保留：
 
 ```bash
 conda env create -f environment.yml
 conda activate pytorch-img2img
-```
-
-如果你已经有可用环境，例如本次实验使用的 `ann` 环境，也可以直接使用。若遇到 `GLIBCXX_3.4.31 not found`，先执行：
-
-```bash
-export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 ```
 
 ## 下载数据集
@@ -53,7 +46,7 @@ bash scripts/download_edges2shoes.sh
 datasets/edges2shoes
 ```
 
-也可以使用已有数据集路径，例如：
+如果是已有数据集路径：
 
 ```text
 /workspace/network/homework3/data/edges2shoes
@@ -75,7 +68,7 @@ bash scripts/infer_edges2shoes.sh
 bash scripts/infer_edges2shoes.sh /workspace/network/homework3/data/edges2shoes
 ```
 
-推理结果会保存到：
+推理结果保存到：
 
 ```text
 results/edges2shoes_pix2pix_full_bs4/val_latest/index.html
@@ -107,7 +100,7 @@ bash scripts/train_edges2shoes_full.sh
 bash scripts/train_edges2shoes_full.sh /workspace/network/homework3/data/edges2shoes
 ```
 
-本次训练命令等价于：
+本次训练命令相当于：
 
 ```bash
 python train.py \
@@ -127,9 +120,7 @@ python train.py \
 
 其中 `AtoB` 表示从输入边缘图生成鞋子照片。`edges2shoes` 的拼接图片左半边是 edge，右半边是 shoe photo。
 
-## 训练产物
-
-本次训练配置：
+训练配置：
 
 - 模型：pix2pix
 - 数据：edges2shoes
