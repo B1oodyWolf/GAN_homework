@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+wandb/
+results/
+datasets/edges2shoes/
+datasets/*.tar.gz
+checkpoints/**/web/
+checkpoints/**/val_opt.txt
+checkpoints/**/*.pth
+!checkpoints/**/*.pth.part-*
